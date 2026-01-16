@@ -20,23 +20,7 @@ class Manufacturer(models.Model):
 
 
 class Driver(AbstractUser):
-    CHARACTERS = 8
-    license_number = models.CharField(
-        max_length=CHARACTERS,
-        unique=True,
-        validators=[
-            MinLengthValidator(CHARACTERS),
-            MaxLengthValidator(CHARACTERS),
-            RegexValidator(
-                regex=r"^[A-Z]{3}\d{5}$",
-                message=(
-                    "There must be exactly 8 characters:"
-                    "the first 3 are uppercase letters,"
-                    "the last 5 are numbers."
-                ),
-            ),
-        ]
-    )
+    license_number = models.CharField(max_length=255, unique=True)
 
     class Meta:
         verbose_name = "driver"
